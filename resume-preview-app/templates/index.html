@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    <title>Job Application Manager</title>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Job Application Manager</h1>
+        <button id="toggle-darkmode">Toggle Dark Mode</button>
+    </header>
+
+    <form method="post" enctype="multipart/form-data">
+        <label class="upload-btn">
+            Upload Job Description PDF
+            <input type="file" name="jd_file" required>
+        </label>
+
+        <label class="upload-btn">
+            Upload Resume PDF
+            <input type="file" name="resume_file" required>
+        </label>
+
+        <button type="submit" class="submit-btn">Upload Files</button>
+    </form>
+
+    <section class="pdf-list">
+        <h2>Available Job Descriptions</h2>
+        <ul>
+            {% for job in job_files %}
+                <li>{{ job }}</li>
+            {% endfor %}
+        </ul>
+        <ul>
+            {% for job in job_files %}
+                <li>
+                    <a href="{{ url_for('view', jd_filename=job, resume_filename='your_resume.pdf') }}">
+                        {{ job }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>        
+    </section>
+</div>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

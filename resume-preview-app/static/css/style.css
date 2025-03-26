@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #333;
+    padding: 15px;
+}
+
+.dark-mode {
+    background: #181818;
+    color: #ddd;
+}
+
+header, .tab-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+button, .upload-btn, .submit-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.upload-btn {
+    background-color: #28a745;
+    color: white;
+    margin-right: 10px;
+}
+
+.submit-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: 600px;
+}
+
+@media (max-width: 768px) {
+    .pdf-viewer {
+        height: 500px;
+    }
+}
+
+.status-btn {
+    background-color: #555;
+    color: white;
+    margin: 5px;
+}
