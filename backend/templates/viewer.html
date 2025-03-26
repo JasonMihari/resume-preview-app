@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+    <title>View Job & Resume</title>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h2>{{ jd_filename }}</h2>
+        <button id="toggle-darkmode">Toggle Dark Mode</button>
+    </header>
+
+    <div class="tab-container">
+        <button class="tab-btn active" data-tab="jd-tab">Job Description</button>
+        <button class="tab-btn" data-tab="resume-tab">Resume</button>
+    </div>
+
+    <div id="jd-tab" class="tab-content active">
+        <embed src="{{ url_for('job_descriptions', filename=jd_filename) }}" type="application/pdf" class="pdf-viewer">
+    </div>
+
+    <div id="resume-tab" class="tab-content">
+        <embed src="{{ url_for('resumes', filename=resume_filename) }}" type="application/pdf" class="pdf-viewer">
+    </div>
+
+    <div class="status-container">
+        <p>Job Awarded?</p>
+        <button class="status-btn" onclick="updateStatus('Yes')">Yes</button>
+        <button class="status-btn" onclick="updateStatus('No')">No</button>
+        <p id="status-result"></p>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="back-btn">← Back to Home</a>
+</div>
+<script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>
